@@ -1,0 +1,75 @@
+
+
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('');">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+					<span class="login100-form-title p-b-53">
+					Bank Branches Enquiry List
+					</span><i class="fa fa-search" aria-hidden="true"></i>
+          <br>
+           <br>
+         
+            <div *ngIf="showError==true" class="alert" name="älert">{{errorMsg}} </div>
+         <br>
+
+        <div class="row">
+				
+					<div class="wrap-input100 validate-input">
+					 <select class="form-control" name="city" style="padding-bottom: 1%" (change)="dropdownChange(userForm.value)" ngModel>
+  							  <option value="" selected disabled>Choose your city</option>
+							  <option value="1" [selected]="city ==1">BANGALORE</option>
+                <option value="2" [selected]="city ==2">MANGALORE</option>
+                <option value="3" [selected]="city ==3">DAVANAGERE</option>
+                <option value="4" [selected]="city ==4">BAGALKOT</option>
+                 <option value="5" [selected]="city ==5">CHITRADURGA</option>
+							             
+						  </select> &nbsp;  &nbsp;  &nbsp;
+					</div>
+         
+					<div class="wrap-input100 validate-input">
+            <input type="text" [(ngModel)]="searchText" 
+            class="form-control" placeholder="Search By branch" class="input100" name="searchText" />
+						<span class="focus-input100"></span>
+          </div>
+         
+        </div>
+
+          <br>
+<table  *ngIf="showmsg==true" cellspacing="30" class="table table-striped table-hover table-sm">
+  
+  <thead>
+    <tr>
+     
+	  <th style="text-align: center">Bank Name</th>
+      <th style="text-align: right">Branch</th>
+	   <th style="text-align: right">IFSC Code</th>
+     <th style="text-align: right">Bank ID</th>
+      <th style="text-align: right">District</th>
+       <th style="text-align: right">State</th>
+	  
+    </tr>
+  </thead>
+
+   <tbody>
+    <tr  *ngFor="let data of filteredData | filter: searchText">
+     
+      <td>{{data.bank_name}}</td>
+   
+	<td style="text-align: right">{{data.branch}}</td>
+      <td style="text-align: right">{{data.ifsc}}</td>
+       <td style="text-align: center">{{data.bank_id}}</td>
+          <td style="text-align: right">{{data.district}}</td>
+            <td style="text-align: right">{{data.state}}</td>
+	 
+    </tr>
+
+  </tbody>
+  
+  </table>
+				
+				</form>
+			</div>
+		</div>
+	</div>
