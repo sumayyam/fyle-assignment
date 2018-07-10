@@ -7,41 +7,12 @@ import { RequestOptions } from "@angular/http";
 
 @Injectable()
 export class DataService {
-  firstname: any;
-    lastname:string;
-    username:string;
-    mobilenumber:string;
-    password:string;
-    Confirmpwd:string;
+ 
 
   constructor(private http : Http) { }
 
-     login(user) {
-     
-    if(this.register(user)){
-      
-      this.username=localStorage.getItem("username");
-      this.password=localStorage.getItem("password");
-    }
-      return true;
-  
-  }
 
-   register(user) {
-
-  
-       localStorage.setItem("firstname", user.firstname);
-      localStorage.setItem("lastname",user.lastname);
-      localStorage.setItem("username", user.username);
-      localStorage.setItem("mobilenumber", user.mobilenumber);
-      localStorage.setItem("password",user.password);
-       localStorage.setItem("Confirmpwd",user.Confirmpwd);
-      console.log('authenticatedUser::',localStorage.getItem("username"))
-       console.log('mobilenumber::',localStorage.getItem("mobilenumber"))
-
-  console.log('password match')
-  return true;
-}
+ 
 
 getBranchDetails(value){
 		let headers = new Headers({ 'Content-Type': 'application/json'});
